@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Agency</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        html {
+            box-sizing: border-box;
+        }
+        *, *::before, *::after {
+            box-sizing: inherit;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            color: #1a1a1a;
+            background-color: #ffffff;
+        }
+
+        .page-wrapper {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 155px 10px;
+        }
+
+        header {
+            background-color: #4694DC;
+            padding: 130px 0 105px;
+            color: #fff;
+        }
+
+        .main-title {
+            font-size: 56px;
+            font-weight: 600;
+            line-height: 1;
+            margin: 3px 0 25px;
+            color: #fff;
+            letter-spacing: 3px;
+        }
+
+        .main-description {
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 26px;
+            max-width: 440px;
+            letter-spacing: 1px;
+            margin: 0 0 50px;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .action-button {
+            border: none;
+            width: 196px;
+            height: 62px;
+            font-size: 16px;
+            font-weight: 500;
+            font-family: inherit;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            cursor: pointer;
+            transition: background-color .2s ease, transform .2s ease, box-shadow .2s ease;
+        }
+
+        .action-button:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
+        }
+        
+        .action-button:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .action-button:focus {
+            outline: 2px solid #ffffff;
+            outline-offset: 4px;
+        }
+
+        .our-services {
+            padding: 105px 0 140px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 95px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            margin: 0px 0 28px;
+            color: #1a1a1a;
+        }
+
+        .section-subtitle {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 26px;
+            color: #9CA3AF;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: flex;
+            justify-content: space-evenly;
+            max-width: 1000px;
+            padding-top: 15px;
+            margin: 0 auto;
+        }
+
+        .service-box {
+            flex: 0 0 200px;
+            text-align: center;
+        }
+
+        .service-icon {
+            display: block;
+            width: 45px;
+            height: 45px;
+            font-size: 45px;
+            color: #1a1a1a;
+            margin: 0 auto 32px;
+        }
+
+        .service-heading {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+            margin: 0;
+            color: #9CA3AF;
+        }
+
+        .team-section {
+            padding: 50px 0 140px;
+        }
+
+        .team-section .section-header {
+            margin-bottom: 95px;
+        }
+
+        .team-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+
+        .team-card {
+            flex: 1 1 0;
+            max-width: 275px;
+            display: flex;
+            align-items: center;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+            padding: 0 22px;
+        }
+
+        .team-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 14px;
+            flex-shrink: 0;
+        }
+
+        .team-details {
+            text-align: left;
+            min-width: 0;
+        }
+
+        .team-name {
+            font-size: 14px;
+            font-weight: 500;
+            margin: 0 0 3px;
+            color: #1a1a1a;
+            line-height: 1.3;
+        }
+
+        .team-role {
+            font-size: 12px;
+            font-style: italic;
+            font-weight: 400;
+            margin: 0;
+            color: #9CA3AF;
+            line-height: 1.3;
+        }
+
+        .scroll-reveal {
+            animation-duration: 1s;
+            animation-fill-mode: both;
+            animation-timing-function: ease;
+            animation-timeline: view();
+            animation-range: entry 0% entry 100%;
+        }
+
+        .scroll-reveal.delay-1 { animation-range: entry 20% entry 100%; }
+        .scroll-reveal.delay-2 { animation-range: entry 40% entry 100%; }
+
+        .fade-up    { animation-name: fadeInUp; }
+        .fade-left  { animation-name: fadeInLeft; }
+        .fade-right { animation-name: fadeInRight; }
+        .zoom-anim  { animation-name: zoomIn; }
+
+        @supports not (animation-timeline: view()) {
+            .scroll-reveal {
+                animation: none;
+                opacity: 1;
+            }
+        }
+
+        .service-box {
+            transition: transform .35s ease;
+        }
+        .service-box:hover {
+            transform: translateY(-6px);
+        }
+        .service-icon {
+            transition: transform .35s ease;
+        }
+        .service-box:hover .service-icon {
+            transform: scale(1.12) rotate(-4deg);
+        }
+
+        .team-card {
+            transition: transform .35s ease, box-shadow .35s ease;
+        }
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+        }
+        .team-avatar {
+            transition: transform .35s ease;
+        }
+        .team-card:hover .team-avatar {
+            transform: scale(1.08);
+        }
+
+        @media (max-width: 1200px) {
+            .page-wrapper {
+                padding: 0 80px;
+            }
+            .main-title {
+                font-size: 52px;
+            }
+            .services-grid,
+            .team-grid {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .page-wrapper {
+                padding: 0 40px;
+            }
+            header {
+                padding: 90px 0 70px;
+            }
+            .main-title {
+                font-size: 44px;
+            }
+            .our-services {
+                padding: 90px 0;
+            }
+            .team-section {
+                padding: 0 0 90px;
+            }
+            .section-header {
+                margin-bottom: 60px;
+            }
+            .services-grid {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 40px;
+            }
+            .service-box {
+                flex: 0 0 240px;
+            }
+            .team-grid {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+            .team-card {
+                flex: 1 1 300px;
+            }
+        }
+
+        @media (max-width: 620px) {
+            .page-wrapper {
+                padding: 0 20px;
+            }
+            header {
+                padding: 70px 0 50px;
+            }
+            .main-title {
+                font-size: 34px;
+                margin-bottom: 26px;
+            }
+            .main-description {
+                margin-bottom: 34px;
+            }
+            .action-button {
+                width: 100%;
+                max-width: 240px;
+            }
+            .section-title {
+                font-size: 16px;
+                letter-spacing: 2.5px;
+            }
+            .services-grid {
+                flex-direction: column;
+                align-items: center;
+                gap: 45px;
+            }
+            .service-box {
+                flex: 0 0 auto;
+                max-width: 280px;
+            }
+            .team-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            .team-card {
+                flex: 0 0 auto;
+                width: 100%;
+                max-width: 340px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="page-wrapper">
+            <h1 class="main-title animate__animated animate__fadeInDown">
+                Digital Marketing Agency
+            </h1>
+            <p class="main-description animate__animated animate__fadeInUp animate__delay-1s">
+                Award winning digital marketing agency in Singapore.<br>
+                A home-grown company since 2018.
+            </p>
+            <button class="action-button animate__animated animate__zoomIn animate__delay-2s">
+                Find out more
+            </button>
+        </div>
+    </header>
+
+    <section class="our-services">
+        <div class="page-wrapper">
+            <div class="section-header">
+                <h2 class="section-title scroll-reveal fade-up">OUR SERVICES</h2>
+                <p class="section-subtitle scroll-reveal fade-up delay-1">
+                    Increase your insight and make the better experience with our valuable services.
+                </p>
+            </div>
+            <div class="services-grid">
+                <div class="service-box scroll-reveal zoom-anim">
+                    <i class="fa-solid fa-magnifying-glass service-icon"></i>
+                    <h3 class="service-heading">Search Engine Optimization</h3>
+                </div>
+                <div class="service-box scroll-reveal zoom-anim delay-1">
+                    <i class="fa-solid fa-users service-icon"></i>
+                    <h3 class="service-heading">Social Media Optimization</h3>
+                </div>
+                <div class="service-box scroll-reveal zoom-anim delay-2">
+                    <i class="fa-solid fa-pen-nib service-icon"></i>
+                    <h3 class="service-heading">UX Writer</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <div class="page-wrapper">
+            <div class="section-header">
+                <h2 class="section-title scroll-reveal fade-up">OUR TALENTED MEMBER</h2>
+                <p class="section-subtitle scroll-reveal fade-up delay-1">
+                    Increase your insight and make the better experience with our valuable services.
+                </p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card scroll-reveal fade-left">
+                    <img src="https://i.pravatar.cc/150?img=1" alt="Sarah Gilbert" class="team-avatar">
+                    <div class="team-details">
+                        <h3 class="team-name">Sarah Gilbert</h3>
+                        <p class="team-role">CEO &amp; Founder DigiXine</p>
+                    </div>
+                </div>
+                <div class="team-card scroll-reveal fade-up delay-1">
+                    <img src="https://i.pravatar.cc/150?img=11" alt="Stephen Joe" class="team-avatar">
+                    <div class="team-details">
+                        <h3 class="team-name">Stephen Joe</h3>
+                        <p class="team-role">Social Media Manager</p>
+                    </div>
+                </div>
+                <div class="team-card scroll-reveal fade-right delay-2">
+                    <img src="https://i.pravatar.cc/150?img=3" alt="Danie Rogue" class="team-avatar">
+                    <div class="team-details">
+                        <h3 class="team-name">Danie Rogue</h3>
+                        <p class="team-role">Senior UX Writer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
